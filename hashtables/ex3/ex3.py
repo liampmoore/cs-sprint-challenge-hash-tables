@@ -3,7 +3,19 @@ def intersection(arrays):
     YOUR CODE HERE
     """
     # Your code here
+    tables = [None] * len(arrays)
 
+    for index, array in enumerate(arrays):
+        tables[index] = {}
+        if index == 0:
+            for number in array:
+                tables[index][number] = number
+        else:
+            for number in array:
+                if number in tables[index - 1]:
+                    tables[index][number] = number
+
+    result = list(tables[-1].values())
     return result
 
 
